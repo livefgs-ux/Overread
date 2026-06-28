@@ -1,0 +1,6 @@
+{
+  "name": "OverRead",
+  "description": "Visual translation for Webtoons, comics, and pages through an overlay.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
