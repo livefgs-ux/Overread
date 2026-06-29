@@ -404,10 +404,12 @@ class LiveReadingService : Service() {
                     LanguageIdEngine.identifyLanguage(textForLangId, targetLanguage)
                 }
 
-                // Step 4: Translation
-                com.aistudio.overread.bzvz.translation.TranslationManager.processTranslation(
-                    processedText, langIdResult
-                )
+                // Step 4: Translation (MUST await completion before proceeding)
+                withContext(Dispatchers.IO) {
+                    com.aistudio.overread.bzvz.translation.TranslationManager.processTranslation(
+                        processedText, langIdResult
+                    )
+                }
 
                 // Step 5: Render overlays if translation succeeded
                 val translationResult = com.aistudio.overread.bzvz.translation.TranslationManager.lastTranslationResult.value
