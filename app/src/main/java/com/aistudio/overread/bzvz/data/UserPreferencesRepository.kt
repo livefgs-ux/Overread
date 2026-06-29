@@ -17,6 +17,7 @@ class UserPreferencesRepository(private val context: Context) {
 
     private val ONBOARDING_COMPLETED = booleanPreferencesKey("onboarding_completed")
     private val TARGET_LANGUAGE = stringPreferencesKey("target_language")
+    private val SELECTED_APP = stringPreferencesKey("selected_app") // "entire_screen" or app package name
     private val READING_MODE = booleanPreferencesKey("reading_mode") // false = Normal, true = Reading
     private val OVERLAY_OPACITY = floatPreferencesKey("overlay_opacity")
     private val FLOATING_BUTTON_SIZE = stringPreferencesKey("floating_button_size")
@@ -28,6 +29,10 @@ class UserPreferencesRepository(private val context: Context) {
 
     val targetLanguageFlow: Flow<String> = context.dataStore.data.map { preferences ->
         preferences[TARGET_LANGUAGE] ?: "en" // default to English
+    }
+
+    val selectedAppFlow: Flow<String> = context.dataStore.data.map { preferences ->
+        preferences[SELECTED_APP] ?: "entire_screen" // default to translating entire screen
     }
 
     val readingModeFlow: Flow<Boolean> = context.dataStore.data.map { preferences ->
@@ -55,6 +60,12 @@ class UserPreferencesRepository(private val context: Context) {
     suspend fun setTargetLanguage(languageCode: String) {
         context.dataStore.edit { preferences ->
             preferences[TARGET_LANGUAGE] = languageCode
+        }
+    }
+
+    suspend fun setSelectedApp(appPackageOrMode: String) {
+        context.dataStore.edit { preferences ->
+            preferences[SELECTED_APP] = appPackageOrMode
         }
     }
 
