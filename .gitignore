@@ -1,18 +1,46 @@
+# Gradle
+.gradle/
+build/
+*.jar
+*.aar
+
+# Android Studio
+.idea/
 *.iml
-.gradle
-.kotlin
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+*.iws
+*.ipr
+*.apk
+*.ap_
+*.dex
+*.class
+*.log
 local.properties
+proguard-rules.pro
+
+# Generated files
+gen/
+out/
+
+# Signing files
+*.keystore
+*.jks
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.classpath
+.project
+.settings/
+*.swp
+*.swo
+
+# Secrets/Environment
 .env
-debug.keystore
+.env.local
+secret.properties
+
+# Backup files
+*.bak
+*~
