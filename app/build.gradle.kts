@@ -14,8 +14,8 @@ android {
     applicationId = "com.aistudio.overread.bzvz"
     minSdk = 24
     targetSdk = 36
-    versionCode = 17
-    versionName = "1.2.7"
+    versionCode = 18
+    versionName = "1.3.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -133,9 +133,16 @@ dependencies {
   implementation(libs.androidx.room.runtime)
   // implementation(libs.coil.compose)
   implementation(libs.converter.moshi)
+  
+  // ML Kit - Multi-script text recognition for webtoon translation
   implementation(libs.mlkit.text.recognition)
+  implementation(libs.mlkit.text.recognition.chinese)
+  implementation(libs.mlkit.text.recognition.japanese)
+  implementation(libs.mlkit.text.recognition.korean)
+  implementation(libs.mlkit.text.recognition.devanagari)
   implementation(libs.mlkit.language.id)
   implementation(libs.mlkit.translate)
+  
   implementation(libs.kotlinx.coroutines.play.services)
   // implementation(libs.firebase.ai)
   implementation(libs.kotlinx.coroutines.android)
@@ -196,4 +203,3 @@ afterEvaluate {
     }
   }
 }
-
